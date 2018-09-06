@@ -6,7 +6,7 @@ server:
   port: 7001
 spring:
   application:
-    name: servicecloud-config-dev2
+    name: servicecloud-eureka-config
   profiles: dev2
 eureka:
   instance:
@@ -22,7 +22,7 @@ server:
   port: 7002
 spring:
   application:
-    name: servicecloud-config-prod
+    name: servicecloud-eureka-config
   profiles: prod
 eureka:
   instance:
