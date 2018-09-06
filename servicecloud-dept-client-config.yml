@@ -1,0 +1,109 @@
+spring:
+  profiles: 
+    active: dev2
+---
+server:
+  port: 8082
+management:
+    endpoints:
+      web:
+        expose: "*"
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.luogan.serivceapi.entities
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: servicecloud-dept-config-dev2
+  profiles: dev2
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/cloudDB03
+    password: luogan
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    #最大并发连接数
+    maxActive: 20
+    initialSize: 5
+    #配置获取连接等待超时的时间
+    maxWait: 60000
+    #最小空闲连接数
+    minIdle: 10
+    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    #配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 20
+    # 打开 removeAbandoned 功能
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    #关闭 abanded 连接时输出错误日志
+    logAbandoned: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: serviceprovider8003
+#将客服端注册进eureka服务列表内
+  client:
+    service-url:
+      defaultZone:  http://eureka7001:7001/eureka/
+
+ 
+---
+server:
+  port: 80
+management:
+    endpoints:
+      web:
+        expose: "*"
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.luogan.serivceapi.entities
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: servicecloud-dept-config-prod
+  profiles: prod
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/cloudDB03
+    password: luogan
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    #最大并发连接数
+    maxActive: 20
+    initialSize: 5
+    #配置获取连接等待超时的时间
+    maxWait: 60000
+    #最小空闲连接数
+    minIdle: 10
+    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    #配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 20
+    # 打开 removeAbandoned 功能
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    #关闭 abanded 连接时输出错误日志
+    logAbandoned: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: serviceprovider8003
+#将客服端注册进eureka服务列表内
+  client:
+    service-url:
+      defaultZone:  http://eureka7001:7001/eureka/
